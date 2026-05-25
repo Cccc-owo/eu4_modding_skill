@@ -1,0 +1,6 @@
+interface:
+  display_name: "EU4 Modding"
+  short_description: "Standalone EU4 modding guidance"
+  default_prompt: "Use $eu4-modding to create, modify, or review Europa Universalis IV mod files with standalone EU4 modding guidance."
+policy:
+  allow_implicit_invocation: true
