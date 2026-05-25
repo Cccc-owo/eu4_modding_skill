@@ -35,7 +35,10 @@ Rules:
 Encoding:
 
 - Localisation files should be UTF-8 with BOM.
-- Other EU4 text files are usually CP-1252/ANSI and should not have BOM.
+- Other EU4 text data files should use Windows-1252 / CP-1252 and should not have BOM.
+- For non-localisation files, match the encoding and line-ending style of a current working file from the same folder type instead of introducing a new encoding guess.
+- If you keep non-localisation files ASCII-only, they remain compatible with this rule.
+- Do not re-encode an existing text file unless the user has confirmed that change; conversion can corrupt characters or parser-significant bytes.
 - If unsure, copy a working vanilla/mod localisation file and edit it.
 
 ## Replace Folder

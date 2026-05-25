@@ -36,7 +36,11 @@ EU4 uses Clausewitz-style text data. Most mod work is matching the correct folde
    - Trigger context: `potential`, `allow`, `trigger`, `limit`, `provinces_to_highlight`.
    - Effect context: `effect`, `immediate`, event options, scripted effects, run files.
 11. Add localisation for every visible key.
-12. Test with static review, game logs, and console/run-file checks.
+12. Respect file encoding:
+   - `localisation/*.yml` should be UTF-8 with BOM.
+   - Other EU4 text data files should use Windows-1252 / CP-1252 and should not have BOM; when unsure, copy a current working file from the same folder type.
+   - Do not perform text-file re-encoding without user confirmation; encoding conversion can corrupt file contents.
+13. Test with static review, game logs, and console/run-file checks.
 
 ## Reference Loader
 

@@ -12,6 +12,8 @@ EU4 mod validation combines static review, logs, console commands, and reduced r
 - Decisions are inside `country_decisions = { ... }`.
 - Mission dependencies point to existing visible mission keys.
 - Localisation covers every visible string.
+- Localisation files use UTF-8 with BOM; other text data files use Windows-1252 / CP-1252 and do not introduce BOM unexpectedly.
+- Re-encoding an existing text file is a user-confirmed operation because conversion can corrupt content.
 - Assets referenced by script are declared and exist.
 - Country tags point to existing country files.
 - Map province IDs are consistent across all map/history files.
@@ -100,10 +102,12 @@ log = "My variable: [Root.my_var.GetValue]"
 2. Read `error.log`.
 3. If crash, read `exceptions.log`.
 4. Identify load phase: databases/common, history, events, GUI, graphics, map.
-5. Remove or disable recent files by folder until the failure disappears.
-6. Reintroduce the smallest failing object.
-7. Compare with a known-good template.
-8. Fix references before changing design.
+5. If a whole localisation file or many adjacent keys fail at once, check encoding/BOM before rewriting syntax.
+6. If non-localisation text shows garbled special characters or parser noise after adding non-ASCII text, check whether the file was saved as UTF-8 instead of Windows-1252 / CP-1252.
+7. Remove or disable recent files by folder until the failure disappears.
+8. Reintroduce the smallest failing object.
+9. Compare with a known-good template from the same folder type.
+10. Fix references before changing design.
 
 ## Checksum
 
